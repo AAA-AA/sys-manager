@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+		PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+		"http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<context defaultModelType="flat" id="write" targetRuntime="MyBatis3">
+		<!--防止多次生成，重复的sql叠加-->
+		<plugin type="com.github.mybatis.generator.plugin.XmlFileOverwritePlugin"/>
+		<!--提供lombok支持，非必需-->
+		<plugin type="com.github.mybatis.generator.plugin.LombokPlugin"/>
+		<!--提供批量插入支持-->
+		<plugin type="com.github.mybatis.generator.plugin.MultiInsertPlugin"/>
+		<!--生成mapper时是否携带@Repository注解。加上plugin，会自动生成，如若不想要，移除即可-->
+		<plugin type="com.github.mybatis.generator.plugin.MapperAnnotationPlugin"/>
+		<!--忽略表的某些前缀来生成对应的对象，譬如表名为t_sms_template, 忽略t_后，生成的实体类是SmsTemplate, 符合实际需求-->
+		<plugin type="com.github.mybatis.generator.plugin.RenamePlugin">
+			<property name="ignoreTablePrefix" value="xj_"/>
+		</plugin>
+		<commentGenerator type="com.github.mybatis.generator.comment.CommentGenerator"/>
+		<jdbcConnection connectionURL="jdbc:mysql://10.231.20.43:3306/sales?useUnicode=true&amp;characterEncoding=utf-8"
+						driverClass="com.mysql.jdbc.Driver" password="alVemzqap30"
+						userId="root" />
+
+		<javaTypeResolver type="com.github.mybatis.generator.type.JavaTypeResolver">
+			<property name="forceLocalDateTime" value="true"/>
+			<property name="forceTinyintInteger" value="true"/>
+			<property name="forceSmallIntInteger" value="true"/>
+		</javaTypeResolver>
+
+
+		<!--实体 -->
+		<javaModelGenerator targetPackage="com.github.sys.model"
+			targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<!--mapper映射文件-->
+		<sqlMapGenerator targetPackage="mapper.gen"
+			targetProject="src/main/resources">
+		</sqlMapGenerator>
+
+		<!--接口mapper -->
+		<javaClientGenerator targetPackage="com.github.sys.dao"
+			targetProject="src/main/java" type="XMLMAPPER">
+		</javaClientGenerator>
+
+		<table tableName="sec_user" >
+			<property name="useActualColumnNames" value="false" />
+			<generatedKey column="id" sqlStatement="JDBC"/>
+		</table>
+
+
+	</context>
+
+</generatorConfiguration>

@@ -1,0 +1,14 @@
+server:
+  port: 8085
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/system
+    username: root
+    password: 1qaz2wsx
+    driver-class-name: org.mariadb.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      access-to-underlying-connection-allowed: true
+      max-active: 20
+      min-idle: 5
+      validation-query: select 1
