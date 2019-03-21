@@ -1,4 +1,4 @@
-package com.github.sys.domain;
+package com.github.sys.domain.user;
 
 import lombok.Data;
 

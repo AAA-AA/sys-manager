@@ -1,23 +1,24 @@
 package com.github.sys.controller;
 
-import com.github.sys.domain.UserUpdate;
-import com.github.sys.domain.UserAdd;
-import com.github.sys.domain.UserQuery;
-import com.github.sys.domain.UserVo;
+import com.github.sys.domain.user.UserAdd;
+import com.github.sys.domain.user.UserQuery;
+import com.github.sys.domain.user.UserUpdate;
+import com.github.sys.domain.user.UserVo;
 import com.github.sys.domain.common.PageResp;
+import com.github.sys.domain.common.ResponseDto;
 import com.github.sys.service.SecUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * Created by renhongqiang on 2019-03-16 21:07
  */
 @RestController
-@RequestMapping(value = { "/security/user" })
+@RequestMapping(value = {"/security/user"})
 @Slf4j
 public class SecUserController {
 
@@ -26,29 +27,33 @@ public class SecUserController {
 
 
     @PostMapping(value = "/add")
-    public ResponseEntity addUser(@Valid @RequestBody UserAdd userAdd) {
+    public ResponseDto addUser(@Valid @RequestBody UserAdd userAdd) {
         userService.addUser(userAdd);
-        return ResponseEntity.ok(null);
+        return ResponseDto.ok(null);
     }
 
-
+    @GetMapping(value = "/getAll")
+    public ResponseDto getAll() {
+        List<UserVo> userVos = userService.getAll();
+        return ResponseDto.ok(userVos);
+    }
 
     @PostMapping(value = "/list")
-    public ResponseEntity list(@RequestBody UserQuery userQuery) {
-        PageResp<UserVo> page =  userService.list(userQuery);
-        return ResponseEntity.ok(page);
+    public ResponseDto list(@RequestBody UserQuery userQuery) {
+        PageResp<UserVo> page = userService.list(userQuery);
+        return ResponseDto.ok(page);
     }
 
     @PostMapping(value = "/update")
-    public ResponseEntity update(@Valid @RequestBody UserUpdate update) {
+    public ResponseDto update(@Valid @RequestBody UserUpdate update) {
         userService.update(update);
-        return ResponseEntity.ok(null);
+        return ResponseDto.ok(null);
     }
 
     @GetMapping(value = "/delete")
-    public ResponseEntity delete(Integer userId) {
+    public ResponseDto delete(Integer userId) {
         userService.delete(userId);
-        return ResponseEntity.ok(null);
+        return ResponseDto.ok(null);
     }
 
 }

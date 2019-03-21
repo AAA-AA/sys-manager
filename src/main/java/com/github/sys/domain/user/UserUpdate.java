@@ -1,9 +1,10 @@
-package com.github.sys.domain;
+package com.github.sys.domain.user;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
@@ -11,6 +12,8 @@ import java.time.LocalDateTime;
  */
 @Data
 public class UserUpdate {
+
+    private Integer id;
 
     /**用户名，与dashboard名字一致*/
     private String name;
@@ -27,7 +30,9 @@ public class UserUpdate {
     /**年龄*/
     private Integer age;
 
+    private String address;
+
     /**年龄*/
     @JsonDeserialize(using = LocalDateDeserializer.class)
-    private LocalDateTime birth;
+    private LocalDate birth;
 }

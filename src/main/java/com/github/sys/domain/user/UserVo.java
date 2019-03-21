@@ -1,4 +1,4 @@
-package com.github.sys.domain;
+package com.github.sys.domain.user;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
@@ -30,7 +30,11 @@ public class UserVo {
     private Integer age;
 
     /**年龄*/
-    private String birthDay;
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    private LocalDateTime birth;
+
+    /**地址*/
+    private String address;
 
     /**状态*/
     private Integer status;

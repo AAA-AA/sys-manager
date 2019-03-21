@@ -45,7 +45,7 @@
 			targetProject="src/main/java" type="XMLMAPPER">
 		</javaClientGenerator>
 
-		<table tableName="sec_user" >
+		<table tableName="sec_role" >
 			<property name="useActualColumnNames" value="false" />
 			<generatedKey column="id" sqlStatement="JDBC"/>
 		</table>

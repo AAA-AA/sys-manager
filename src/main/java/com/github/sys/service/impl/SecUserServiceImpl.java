@@ -4,22 +4,19 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.sys.convert.UserConverter;
 import com.github.sys.dao.SecUserMapper;
-import com.github.sys.domain.UserAdd;
-import com.github.sys.domain.UserQuery;
-import com.github.sys.domain.UserUpdate;
-import com.github.sys.domain.UserVo;
+import com.github.sys.domain.user.UserAdd;
+import com.github.sys.domain.user.UserQuery;
+import com.github.sys.domain.user.UserUpdate;
+import com.github.sys.domain.user.UserVo;
 import com.github.sys.domain.common.PageResp;
 import com.github.sys.model.SecUser;
 import com.github.sys.model.SecUserExample;
 import com.github.sys.service.SecUserService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 /**
@@ -38,9 +35,7 @@ public class SecUserServiceImpl implements SecUserService {
 
     @Override
     public void addUser(UserAdd userAdd) {
-        SecUser secUser = new SecUser();
-        BeanUtils.copyProperties(userAdd, secUser);
-        secUser.setBirth(LocalDateTime.parse(userAdd.getBirthDay(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+        SecUser secUser = userConverter.fromAdd(userAdd);
         secUserMapper.insertSelective(secUser);
     }
 
@@ -64,8 +59,18 @@ public class SecUserServiceImpl implements SecUserService {
         secUserMapper.deleteByPrimaryKey(userId);
     }
 
+    @Override
+    public List<UserVo> getAll() {
+        SecUserExample example = buildQuery(null);
+        List<SecUser> secUsers = secUserMapper.selectByExample(example);
+        return userConverter.toVo(secUsers);
+    }
+
     private SecUserExample buildQuery(UserQuery userQuery) {
         SecUserExample example = new SecUserExample();
+        if (userQuery == null) {
+            return example;
+        }
         SecUserExample.Criteria criteria = example.createCriteria();
         criteria.andNameLike(userQuery.getName() + "%");
         return example;

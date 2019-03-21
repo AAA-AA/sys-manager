@@ -1,11 +1,12 @@
 package com.github.sys.service;
 
-import com.github.sys.domain.UserAdd;
-import com.github.sys.domain.UserQuery;
-import com.github.sys.domain.UserUpdate;
-import com.github.sys.domain.UserVo;
+import com.github.sys.domain.user.UserAdd;
+import com.github.sys.domain.user.UserQuery;
+import com.github.sys.domain.user.UserUpdate;
+import com.github.sys.domain.user.UserVo;
 import com.github.sys.domain.common.PageResp;
-import org.springframework.context.annotation.Primary;
+
+import java.util.List;
 
 /**
  * Created by renhongqiang on 2019-03-16 21:08
@@ -23,4 +24,7 @@ public interface SecUserService {
     void update(UserUpdate update);
 
     void delete(Integer userId);
+
+    List<UserVo> getAll();
+
 }
