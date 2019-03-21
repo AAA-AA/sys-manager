@@ -20,7 +20,7 @@ import java.util.Properties;
  * Created by renhongqiang on 2019-03-16 20:33
  */
 @Configuration
-@MapperScan("com.github.sys.*")
+@MapperScan("com.github.sys.dao")
 @Slf4j
 public class MybatisConfig {
 

@@ -4,17 +4,16 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.sys.convert.UserConverter;
 import com.github.sys.dao.SecUserMapper;
+import com.github.sys.domain.common.PageResp;
 import com.github.sys.domain.user.UserAdd;
 import com.github.sys.domain.user.UserQuery;
 import com.github.sys.domain.user.UserUpdate;
 import com.github.sys.domain.user.UserVo;
-import com.github.sys.domain.common.PageResp;
 import com.github.sys.model.SecUser;
 import com.github.sys.model.SecUserExample;
 import com.github.sys.service.SecUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,7 +22,6 @@ import java.util.List;
  * Created by renhongqiang on 2019-03-16 21:15
  */
 @Service
-@Primary
 @Slf4j
 public class SecUserServiceImpl implements SecUserService {
 
