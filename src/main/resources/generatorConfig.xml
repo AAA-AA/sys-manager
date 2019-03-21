@@ -17,8 +17,8 @@
 			<property name="ignoreTablePrefix" value="xj_"/>
 		</plugin>
 		<commentGenerator type="com.github.mybatis.generator.comment.CommentGenerator"/>
-		<jdbcConnection connectionURL="jdbc:mysql://10.231.20.43:3306/sales?useUnicode=true&amp;characterEncoding=utf-8"
-						driverClass="com.mysql.jdbc.Driver" password="alVemzqap30"
+		<jdbcConnection connectionURL="jdbc:mysql://127.0.0.1:3306/system?useUnicode=true&amp;characterEncoding=utf-8"
+						driverClass="com.mysql.jdbc.Driver" password="1qaz2wsx"
 						userId="root" />
 
 		<javaTypeResolver type="com.github.mybatis.generator.type.JavaTypeResolver">

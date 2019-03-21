@@ -7,4 +7,11 @@ import lombok.Data;
  */
 @Data
 public class RoleAdd {
+    /**角色名*/
+    private String name;
+
+    private String key;
+
+    /**角色描述*/
+    private String desc;
 }
