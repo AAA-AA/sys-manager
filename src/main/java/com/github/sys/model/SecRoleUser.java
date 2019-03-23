@@ -4,24 +4,18 @@ import java.time.LocalDateTime;
 import lombok.Data;
 
 /**
- * link table is sec_role
+ * link table is sec_role_user
  * Copyright © 2019, github and/or its affiliates. All rights reserved.
  **/
 @Data
-public class SecRole {
+public class SecRoleUser {
     private Integer id;
 
-    /**角色名*/
-    private String name;
+    /**用户id*/
+    private Integer userId;
 
-    /**角色key*/
-    private String roleKey;
-
-    /**角色描述*/
-    private String mark;
-
-    /**状态*/
-    private Integer status;
+    /**角色id*/
+    private Integer roleId;
 
     /**创建时间*/
     private LocalDateTime createTime;

@@ -33,6 +33,7 @@ public class SecUserServiceImpl implements SecUserService {
 
     @Override
     public void addUser(UserAdd userAdd) {
+        userAdd.setBirth(userAdd.getBirthDate().atStartOfDay());
         SecUser secUser = userConverter.fromAdd(userAdd);
         secUserMapper.insertSelective(secUser);
     }
@@ -48,6 +49,9 @@ public class SecUserServiceImpl implements SecUserService {
 
     @Override
     public void update(UserUpdate update) {
+        if (update.getBirthDate() != null) {
+            update.setBirth(update.getBirthDate().atStartOfDay());
+        }
         SecUser secUser = userConverter.fromUpdate(update);
         secUserMapper.updateByPrimaryKeySelective(secUser);
     }

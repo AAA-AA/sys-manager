@@ -9,6 +9,7 @@ import com.github.sys.domain.role.RoleVo;
 import com.github.sys.service.SecRoleService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -49,8 +50,9 @@ public class SecRoleController {
         return ResponseDto.ok(null);
     }
 
-    @GetMapping(value = "/delete")
-    public ResponseDto delete(Integer id) {
+    @PostMapping(value = "/delete")
+    public ResponseDto delete(@RequestParam(value = "id") Integer id) {
+        Assert.isTrue(id != null, "id can not be null!");
         roleService.delete(id);
         return ResponseDto.ok(null);
     }

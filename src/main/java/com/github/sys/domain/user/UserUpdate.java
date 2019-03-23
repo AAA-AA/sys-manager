@@ -34,5 +34,7 @@ public class UserUpdate {
 
     /**年龄*/
     @JsonDeserialize(using = LocalDateDeserializer.class)
-    private LocalDate birth;
+    private LocalDate birthDate;
+
+    private LocalDateTime birth;
 }

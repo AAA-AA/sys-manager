@@ -20,5 +20,10 @@ public interface SecRoleService {
 
     void update(RoleUpdate update);
 
+    /**
+     * todo 待补充用户校验逻辑
+     * 角色不可随意删除，要看角色下是否绑定了用户
+     * @param id
+     */
     void delete(Integer id);
 }

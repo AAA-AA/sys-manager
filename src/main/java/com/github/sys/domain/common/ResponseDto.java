@@ -29,15 +29,19 @@ public class ResponseDto<T> {
         this.msg = msg;
     }
 
+    public static ResponseDto error(String msg) {
+        return new ResponseDto(500, msg);
+    }
+
     public static ResponseDto error(int code, String msg) {
         return new ResponseDto(code, msg);
     }
 
-    public static <T>  ResponseDto<T> ok(T data) {
+    public static <T> ResponseDto<T> ok(T data) {
         return new ResponseDto(data);
     }
 
-    public static <T>  ResponseDto<T> ok() {
+    public static <T> ResponseDto<T> ok() {
         return new ResponseDto(null);
     }
 

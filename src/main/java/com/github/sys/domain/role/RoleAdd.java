@@ -10,8 +10,8 @@ public class RoleAdd {
     /**角色名*/
     private String name;
 
-    private String key;
+    private String roleKey;
 
     /**角色描述*/
-    private String desc;
+    private String mark;
 }
