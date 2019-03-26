@@ -20,6 +20,8 @@ public class UserVo {
     /**邮箱*/
     private String mail;
 
+    private String[] roles = {"admin","second admin"};
+
     /**密码*/
     private String password;
 

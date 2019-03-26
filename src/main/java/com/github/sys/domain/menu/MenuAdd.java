@@ -7,6 +7,8 @@ import lombok.Data;
  */
 @Data
 public class MenuAdd {
+
+    private Integer parentId;
     /**菜单名称*/
     private String name;
 

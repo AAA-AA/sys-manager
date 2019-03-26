@@ -2,16 +2,14 @@ package com.github.sys.controller;
 
 import com.github.sys.domain.common.PageResp;
 import com.github.sys.domain.common.ResponseDto;
-import com.github.sys.domain.menu.MenuAdd;
-import com.github.sys.domain.menu.MenuQuery;
-import com.github.sys.domain.menu.MenuUpdate;
-import com.github.sys.domain.menu.MenuVo;
+import com.github.sys.domain.menu.*;
 import com.github.sys.service.SecMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * Created by renhongqiang on 2019-03-22 16:36
@@ -46,6 +44,12 @@ public class SecMenuController {
         Assert.isTrue(id != null, "id can not be null!");
         menuService.delete(id);
         return ResponseDto.ok(null);
+    }
+
+    @GetMapping(value = "/selectMenuTree")
+    public ResponseDto selectMenuTree() {
+        List<MenuTree> menuTrees = menuService.selectMenuTree(0);
+        return ResponseDto.ok(menuTrees);
     }
 
 

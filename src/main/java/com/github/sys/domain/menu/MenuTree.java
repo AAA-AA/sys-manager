@@ -1,19 +1,17 @@
 package com.github.sys.domain.menu;
 
-import com.github.sys.domain.common.BaseVo;
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
- * Created by renhongqiang on 2019-03-22 21:38
+ * Created by renhongqiang on 2019-03-25 19:57
  */
 @Data
-public class MenuVo extends BaseVo {
+public class MenuTree {
 
     private Integer id;
-
-    private Integer parentId;
-
-    private String parentMenuName;
 
     /**菜单名称*/
     private String name;
@@ -29,4 +27,10 @@ public class MenuVo extends BaseVo {
 
     /**备注*/
     private String mark;
+
+    /** 页面显示的树结构 */
+    private List<MenuTree> children = new ArrayList<>();
+
+    /** 是否有子节点 */
+    private Boolean rootFlag = false;
 }
